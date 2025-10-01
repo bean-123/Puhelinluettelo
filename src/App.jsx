@@ -9,6 +9,7 @@ const App = () => {
   const [inputText, setInputText] = useState("");
   const [inputNumber, setInputNumber] = useState("");
   const [entries, setEntries] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   function onChange(e) {
     setInputText(e.target.value);
@@ -16,6 +17,10 @@ const App = () => {
 
   function onChangeNumber(e) {
     setInputNumber(e.target.value);
+  }
+
+  function handleSearch(e) {
+    setSearchTerm(e.target.value);
   }
 
   function add() {
@@ -32,10 +37,19 @@ const App = () => {
     clear();
   }
 
+  const filteredEntries = entries.filter((entry) =>
+    entry.name.toLowerCase().includes(searchTerm.toLocaleLowerCase())
+  );
+
   return (
     <>
       <Header headerText="Phonebook" />
-      <Input inputText="search" />
+      <Input
+        inputText="search"
+        type="text"
+        onChange={handleSearch}
+        value={searchTerm}
+      />
       <Header headerText="Add new" />
       <Input
         inputText="Name"
@@ -52,7 +66,7 @@ const App = () => {
       <br />
       <Button onClick={handleClick} buttonText="Add" />
       <Header headerText="Numbers" />
-      {entries.map((entry, index) => (
+      {filteredEntries.map((entry, index) => (
         <Names key={index} name={`${entry.name} : ${entry.number}`} />
       ))}
     </>
