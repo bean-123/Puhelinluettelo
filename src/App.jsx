@@ -24,6 +24,16 @@ const App = () => {
   }
 
   function add() {
+    const exists = entries.some(
+      (entry) =>
+        entry.name.toLocaleLowerCase() === inputText.toLocaleLowerCase()
+    );
+
+    if (exists) {
+      alert(`${inputText} is already added to phonebook `);
+      return;
+    }
+
     setEntries([...entries, { name: inputText, number: inputNumber }]);
   }
 
