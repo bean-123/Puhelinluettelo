@@ -47,8 +47,10 @@ const App = () => {
     clear();
   }
 
-  const filteredEntries = entries.filter((entry) =>
-    entry.name.toLowerCase().includes(searchTerm.toLocaleLowerCase())
+  const filteredEntries = entries.filter(
+    (entry) =>
+      entry.name.toLowerCase().includes(searchTerm.toLocaleLowerCase()) ||
+      entry.number.includes(searchTerm)
   );
 
   return (
