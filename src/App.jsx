@@ -3,6 +3,7 @@ import Button from "./components/Button";
 import Header from "./components/Header";
 import Input from "./components/Input";
 import Names from "./components/Names";
+import "./App.css";
 
 const App = () => {
   const [inputText, setInputText] = useState("");
@@ -48,6 +49,7 @@ const App = () => {
         onChange={onChangeNumber}
         value={inputNumber}
       />
+      <br />
       <Button onClick={handleClick} buttonText="Add" />
       <Header headerText="Numbers" />
       {entries.map((entry, index) => (
