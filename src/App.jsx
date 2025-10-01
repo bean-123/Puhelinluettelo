@@ -33,12 +33,26 @@ const App = () => {
 
   return (
     <>
-      <Header />
-      <Input />
-      <Header />
-      <Input />
-      <Button />
-      <Header />
+      <Header headerText="Phonebook" />
+      <Input inputText="search" />
+      <Header headerText="Add new" />
+      <Input
+        inputText="Name"
+        type="text"
+        onChange={onChange}
+        value={inputText}
+      />
+      <Input
+        inputText="Number"
+        type="text"
+        onChange={onChangeNumber}
+        value={inputNumber}
+      />
+      <Button onClick={handleClick} buttonText="Add" />
+      <Header headerText="Numbers" />
+      {entries.map((entry, index) => (
+        <Names key={index} name={`${entry.name} : ${entry.number}`} />
+      ))}
     </>
   );
 };
