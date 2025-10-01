@@ -1,22 +1,41 @@
 import { useState } from "react";
+import Button from "./components/Button";
 
 const App = () => {
-  const [persons, setPersons] = useState([{ name: "Arto Hellas" }]);
-  const [newName, setNewName] = useState("");
+  const [inputText, setInputText] = useState("");
+  const [inputNumber, setInputNumber] = useState("");
+  const [entries, setEntries] = useState([]);
+
+  function onChange(e) {
+    setInputText(e.target.value);
+  }
+
+  function onChangeNumber(e) {
+    setInputNumber(e.target.value);
+  }
+
+  function add() {
+    setEntries([...entries, { name: inputText, number: inputNumber }]);
+  }
+
+  function clear() {
+    setInputText("");
+    setInputNumber("");
+  }
+
+  function handleClick() {
+    add();
+    clear();
+  }
 
   return (
     <>
-      <h2>Phonebook</h2>
-      <form>
-        <div>
-          name: <input />
-        </div>
-        <div>
-          <button type="submit">add</button>
-        </div>
-      </form>
-      <h2>Numbers</h2>
-      ...
+      <Header />
+      <Input />
+      <Header />
+      <Input />
+      <Button />
+      <Header />
     </>
   );
 };
