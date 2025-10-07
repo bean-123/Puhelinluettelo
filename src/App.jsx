@@ -79,7 +79,9 @@ const App = () => {
       <Button onClick={handleClick} buttonText="Add" />
       <Header headerText="Numbers" />
       {filteredEntries.map((entry, index) => (
-        <Names key={index} name={`${entry.name} : ${entry.number}`} />
+        <div key={index}>
+          <Names name={`${entry.name} : ${entry.number}`} />
+        </div>
       ))}
     </>
   );
